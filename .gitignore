@@ -1,0 +1,35 @@
+# Compiled object files
+*.obj
+*.slo
+*.lo
+*.o
+
+# Libraries
+*.lib
+*.dll
+*.so
+*.dylib
+*.lai
+*.la
+*.a
+
+# Binaries etc.
+*.exe
+*.dll
+*.lib
+*.ilk
+*.pdb
+
+# Visual Studio cruft
+.vs/*
+bin/*
+obj/*
+*.psess
+*.vspx
+*.suo
+*.sdf
+*.opensdf
+
+# CMake
+out/*
+CMakeSettings.json
