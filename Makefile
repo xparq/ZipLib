@@ -57,9 +57,9 @@ CXX = ${CXX.$(TOOLCHAIN)}
 #$(info - Using compiler for C: $(CC), C++: $(CXX))
 
 C_AND_CXX_FLAGS = -I. -Iinclude
-C_AND_CXX_FLAGS.linux = -o $@ -Wno-enum-conversion -O3 -fPIC
-C_AND_CXX_FLAGS.mingw = -o $@ -Wno-enum-conversion -O3
-C_AND_CXX_FLAGS.msvc  = -Fo$@ -nologo -O2
+C_AND_CXX_FLAGS.linux = -o $@ -Wall -Wno-enum-conversion -O3 -fPIC
+C_AND_CXX_FLAGS.mingw = -o $@ -Wall -Wno-enum-conversion -O3
+C_AND_CXX_FLAGS.msvc  = -Fo$@ -nologo -W4 -O2
 C_AND_CXX_FLAGS.msvc.static = -MT #!! Applications must be compiled with the same flag if linked to a static lib! :-/
 C_AND_CXX_FLAGS.msvc.shared = -ML
 C_AND_CXX_FLAGS.msvc += ${C_AND_CXX_FLAGS.msvc.$(LIB_MODE)}
