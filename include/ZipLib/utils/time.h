@@ -10,7 +10,7 @@
 # define _utils_stream_localtime(dt, ts)  do { tm* _tmp = localtime(dt); memcpy((ts), _tmp, sizeof(tm)); } while (0)
 #endif
 
-namespace utils { namespace time {
+namespace utils::time {
 
 void timestamp_to_datetime(time_t dateTime, uint16_t& date, uint16_t& time)
 {
@@ -37,6 +37,6 @@ time_t datetime_to_timestamp(uint16_t date, uint16_t time)
   return mktime(&timeStruct);
 }
 
-} }
+}
 
 #undef _utils_stream_localtime

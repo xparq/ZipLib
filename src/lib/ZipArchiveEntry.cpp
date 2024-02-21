@@ -10,8 +10,8 @@
 #include "ZipLib/streams/compression_decoder_stream.h"
 #include "ZipLib/streams/nullstream.h"
 
-#include "ZipLib/utils/stream_utils.h"
-#include "ZipLib/utils/time_utils.h"
+#include "ZipLib/utils/stream.h"
+#include "ZipLib/utils/time.h"
 
 #include <iostream>
 #include <cassert>

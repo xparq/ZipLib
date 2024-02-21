@@ -6,7 +6,7 @@
 #include "method/Deflate.h" // Used as the default
 
 #include "streams/substream.h"
-#include "utils/enum_utils.h"
+#include "utils/enum.h"
 
 #include <cstdint>
 #include <ctime>

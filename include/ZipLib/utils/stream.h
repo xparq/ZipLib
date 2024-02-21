@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-namespace utils { namespace stream {
+namespace utils::stream {
 
 static void copy(std::istream& from, std::ostream& to, size_t bufferSize = 1024 * 1024)
 {
@@ -15,4 +15,4 @@ static void copy(std::istream& from, std::ostream& to, size_t bufferSize = 1024 
   } while (static_cast<size_t>(from.gcount()) == buff.size());
 }
 
-} }
+}

@@ -4,7 +4,45 @@
 #include <vector>
 
 /**
- * \brief Deserializes the basic input type. Deserializes floating number from its binary representation.
+ * \brief Serializes variable of POD type, as its direct binary representation.
+ *
+ * \tparam  TYPE      Type of the value to be serialized.
+ * \param   stream    The stream to be serialized into.
+ * \param   value     The value to be serialized.
+ */
+template <typename TYPE, typename ELEM_TYPE, typename TRAITS_TYPE>
+void serialize(std::basic_ostream<ELEM_TYPE, TRAITS_TYPE>& stream, const TYPE& value)
+{
+  stream.write(reinterpret_cast<const ELEM_TYPE*>(&value), sizeof(TYPE) / sizeof(ELEM_TYPE));
+}
+
+/**
+ * \brief Serializes a string of characters matching the stream's own "character" (element) type.
+ * \param   stream    The stream to be serialized into.
+ * \param   value     The string to be serialized.
+ */
+template <typename ELEM_TYPE, typename TRAITS_TYPE, typename ALLOCATOR_TYPE, template <typename, typename, typename> class STRING_TYPE>
+void serialize(std::basic_ostream<ELEM_TYPE, TRAITS_TYPE>& stream, const STRING_TYPE<ELEM_TYPE, TRAITS_TYPE, ALLOCATOR_TYPE>& value)
+{
+  stream.write(reinterpret_cast<const ELEM_TYPE*>(&value[0]), value.length());
+}
+
+/**
+ * \brief Serializes a vector.
+ *
+ * \param   stream    The stream to be serialized into.
+ * \param   value     The vector to be serialized.
+ */
+template <typename ELEM_TYPE, typename TRAITS_TYPE, typename VECTOR_ELEM_TYPE, typename ALLOCATOR_TYPE, template <typename, typename> class VECTOR_TYPE>
+void serialize(std::basic_ostream<ELEM_TYPE, TRAITS_TYPE>& stream, const VECTOR_TYPE<VECTOR_ELEM_TYPE, ALLOCATOR_TYPE>& value)
+{
+  static_assert(sizeof(ELEM_TYPE) == sizeof(VECTOR_ELEM_TYPE), "sizes must match");
+
+  stream.write(reinterpret_cast<const ELEM_TYPE*>(&value[0]), value.size());
+}
+
+/**
+ * \brief Deserializes a POD type from its direct binary representation.
  *
  * \tparam  RETURN_TYPE  Type of the value to be deserialized.
  * \param   stream    The stream to be deserialized from.
@@ -20,7 +58,7 @@ std::ios::pos_type deserialize(std::basic_istream<ELEM_TYPE, TRAITS_TYPE>& strea
 }
 
 /**
- * \brief Deserializes the string from the stream.
+ * \brief Deserializes a string.
  * \param   stream    The stream to be deserialized from.
  * \param   [out] out The deserialized string.
  * \param   length    The expected length of the string. The value represents the amount of ELEM_TYPE to be read.
@@ -41,7 +79,7 @@ std::ios::pos_type deserialize(std::basic_istream<ELEM_TYPE, TRAITS_TYPE>& strea
 }
 
 /**
- * \brief Deserializes the vector from the stream.
+ * \brief Deserializes a vector.
  * \param   stream    The stream to be deserialized from.
  * \param   [out] out The deserialized string.
  * \param   length    The expected amount of elements in the serialized vector.
@@ -61,42 +99,4 @@ std::ios::pos_type deserialize(std::basic_istream<ELEM_TYPE, TRAITS_TYPE>& strea
   }
   
   return 0;
-}
-
-/**
- * \brief Serializes the basic input type. Serializes floating number into its binary representation.
- *
- * \tparam  TYPE      Type of the value to be serialized.
- * \param   stream    The stream to be serialized into.
- * \param   value     The value to be serialized.
- */
-template <typename TYPE, typename ELEM_TYPE, typename TRAITS_TYPE>
-void serialize(std::basic_ostream<ELEM_TYPE, TRAITS_TYPE>& stream, const TYPE& value)
-{
-  stream.write(reinterpret_cast<const ELEM_TYPE*>(&value), sizeof(TYPE) / sizeof(ELEM_TYPE));
-}
-
-/**
- * \brief Serializes the string.
- * \param   stream    The stream to be serialized into.
- * \param   value     The string to be serialized.
- */
-template <typename ELEM_TYPE, typename TRAITS_TYPE, typename ALLOCATOR_TYPE, template <typename, typename, typename> class STRING_TYPE>
-void serialize(std::basic_ostream<ELEM_TYPE, TRAITS_TYPE>& stream, const STRING_TYPE<ELEM_TYPE, TRAITS_TYPE, ALLOCATOR_TYPE>& value)
-{
-  stream.write(reinterpret_cast<const ELEM_TYPE*>(&value[0]), value.length());
-}
-
-/**
- * \brief Serializes the vector.
- *
- * \param   stream    The stream to be serialized into.
- * \param   value     The vector to be serialized.
- */
-template <typename ELEM_TYPE, typename TRAITS_TYPE, typename VECTOR_ELEM_TYPE, typename ALLOCATOR_TYPE, template <typename, typename> class VECTOR_TYPE>
-void serialize(std::basic_ostream<ELEM_TYPE, TRAITS_TYPE>& stream, const VECTOR_TYPE<VECTOR_ELEM_TYPE, ALLOCATOR_TYPE>& value)
-{
-  static_assert(sizeof(ELEM_TYPE) == sizeof(VECTOR_ELEM_TYPE), "sizes must match");
-
-  stream.write(reinterpret_cast<const ELEM_TYPE*>(&value[0]), value.size());
 }

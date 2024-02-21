@@ -1,6 +1,6 @@
 #include "ZipLib/ZipFile.h"
 
-#include "ZipLib/utils/stream_utils.h"
+#include "ZipLib/utils/stream.h"
 
 #include <fstream>
 #include <cassert>

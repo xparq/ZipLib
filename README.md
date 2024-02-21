@@ -10,27 +10,28 @@ of [Petr Beneš's original](https://bitbucket.org/wbenny/ziplib) with a few impr
 
 ## Features
 
-- Compression/decompresion with Deflate, LZMA, BZip2
+- Compression/decompression with Deflate, LZMA, BZip2
 - Archiving without compression
 - Adding, editing and removing files and directories in the archive
-- Support of PKWare encryption (password protection)
+- PKWare encryption (password protection)
+- Per-file and archive-level comments
+- Streaming (via STL streams): no need to load huge amounts of data into memory
 - Support for file data descriptor blocks (e.g. for compressing to stdout)
-- Support of per-file comments and archive comments
-- Streaming via STL streams: no need to load huge amounts of data into memory
 - Easy-to-use C++ streaming API: memory stream, substream, teestream etc. (`ZipLib/streams`)
-- Handy serialization helpers (`ZipLib/streams/serialization.h`)
-- Using only C++11 standard library features (e.g. smart pointers)
-- Support of Windows and Linux
+- Basic serialization helpers (`ZipLib/streams/serialization.h`)
+- Modest use of the C++ standard lib (mostly C++11 features)
+- Support for Windows and Linux
 
 ## Customizations in this fork
 
-- Reshuffled dir structure (less arcane, more integration-friendly layout, no more internally hard-coded `#include` paths,
-  some headers renamed etc.)
+- C++17 baseline (up from C++11; still avoiding excessive use of the std. lib)
+- Reshuffled dir structure (less arcane, more integration-friendly layout, less rigid internal `#include` paths,
+  some headers renamed for better ergonomics etc.)
 - More explicit toolchain support: MSVC, MinGW/w64devkit (GCC), Linux (GCC, CLANG); auto-detected
-- Frugal CLI build with a single unified GNU makefile (no need for CMake or any other build tooling;
+- Frugal CLI build with a single unified GNU makefile (no need for CMake or any other heavy tooling;
   _the original CMakeLists.txt files are now mostly obsolete, and so are some of the VS project files, I'm afraid!_)
-- Static/shared lib option (via `make LIB_MODE=shared`; the default is `static`)
-- Stopped calling this lib "lightweight". :) _(OK, it's not too bad, but I have very different ideas about what "lightweight" is.)_
+- Static/shared lib option (i.e. `make LIB_MODE=shared`; the default is `static`)
+- Stopped calling this lib "lightweight". :) _(OK, it's not so bad, but I have very different ideas about what "lightweight" is.)_
 - More explicit licensing information (see below); also replaced the unlicensed photo in the original `in1.jpg` test file
   (which, BTW, was "Candy Cigarette" from 1989, by Sally Mann -- an amazing shot!)
 
@@ -39,4 +40,4 @@ of [Petr Beneš's original](https://bitbucket.org/wbenny/ziplib) with a few impr
 - The original ZipLib copyright holder is Petr Beneš (see `Licence.txt`).
 - See the sources of the bundled external libraries for their individual licenses (in the LICENSE files added by this fork).
 - For the incremental changes inherited from https://github.com/DreamyCecil/ZipLib, contact the maintainer of that repo!
-- All additional changes (made by me) are in the Public Domain.
+- All additional changes (by me) are in the Public Domain.

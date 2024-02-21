@@ -70,9 +70,9 @@ CFLAGS.mingw =
 CFLAGS.msvc  =
 CFLAGS += $(C_AND_CXX_FLAGS) ${CFLAGS.$(TOOLCHAIN)}
 
-CXXFLAGS.linux  = -std=c++11
-CXXFLAGS.mingw  = -std=c++11 -D_POSIX_C_SOURCE # localtime_r is only enabled if _POSIX_C_SOURCE is defined! :-o
-CXXFLAGS.msvc   = -EHsc -D_POSIX_C_SOURCE # Doesn't even recognize c++11 any more, so nothing to do.
+CXXFLAGS.linux  = -std=c++17
+CXXFLAGS.mingw  = -std=c++17 -D_POSIX_C_SOURCE # localtime_r is only enabled if _POSIX_C_SOURCE is defined! :-o
+CXXFLAGS.msvc   = -std:c++17 -EHsc -D_POSIX_C_SOURCE
 CXXFLAGS += $(C_AND_CXX_FLAGS) ${CXXFLAGS.$(TOOLCHAIN)}
 
 # Compiler options to use only when compiling objects for the lib:
