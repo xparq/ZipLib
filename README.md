@@ -26,9 +26,12 @@ of [Petr Beneš's original](https://bitbucket.org/wbenny/ziplib) with a few impr
 
 - Reshuffled dir structure (less arcane, more integration-friendly layout, no more internally hard-coded `#include` paths etc.)
 - Toolchain support: MSVC, MinGW/w64devkit (GCC), Linux (GCC, CLANG); auto-detected
-- Frugal CLI build with a single unified GNU makefile (no need for CMake or any other build tooling; _the original CMakeLists.txt files are now mostly obsolete!_)
+- Frugal CLI build with a single unified GNU makefile (no need for CMake or any other build tooling;
+  _the original CMakeLists.txt files are now mostly obsolete, and so are some of the VS project files, I'm afraid!_)
 - Static/shared lib option (i.e. `make LIB_MODE=shared`; the default is `static`)
-- More explicit licensing information (see below)
+- Stopped calling this lib "lightweight". :) _(OK, it's not too bad, but I have very different ideas about what "lightweight" is.)_
+- More explicit licensing information (see below); also replaced the unlicensed photo in the original `in1.jpg` test file
+  (which is "Candy Cigarette" by Sally Mann, from 1989 -- an amazing shot, BTW!)
 
 ## Licensing
 
