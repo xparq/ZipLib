@@ -3,8 +3,6 @@
 
 #include <algorithm>
 
-#ifndef ZIPLIB_NO_ZLIB
-
 struct store_decoder_properties
   : compression_decoder_properties_interface
 {
@@ -21,5 +19,3 @@ struct store_decoder_properties
 
   size_t BufferCapacity;
 };
-
-#endif // ZIPLIB_NO_ZLIB

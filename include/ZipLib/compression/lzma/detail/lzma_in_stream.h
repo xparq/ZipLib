@@ -3,8 +3,6 @@
 #include <condition_variable>
 #include <mutex>
 
-#ifndef ZIPLIB_NO_LZMA
-
 #include "extlibs/lzma/Types.h"
 
 // forward declaration
@@ -106,5 +104,3 @@ namespace detail
       }
   };
 }
-
-#endif // ZIPLIB_NO_LZMA

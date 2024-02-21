@@ -1,11 +1,11 @@
+#ifndef ZIPLIB_NO_ZLIB
+
 #pragma once
 #include "ICompressionMethod.h"
 #include "../compression/store/store_encoder.h"
 #include "../compression/store/store_decoder.h"
 
 #include <memory>
-
-#ifndef ZIPLIB_NO_ZLIB
 
 class StoreMethod :
   public ICompressionMethod

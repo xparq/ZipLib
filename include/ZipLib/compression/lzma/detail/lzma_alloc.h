@@ -1,7 +1,5 @@
 #pragma once
 
-#ifndef ZIPLIB_NO_LZMA
-
 #include "extlibs/lzma/Types.h"
 
 namespace detail
@@ -17,5 +15,3 @@ namespace detail
       }
   };
 }
-
-#endif // ZIPLIB_NO_LZMA

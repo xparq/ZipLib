@@ -1,11 +1,12 @@
+#ifndef ZIPLIB_NO_BZIP2
+
 #pragma once
+
 #include "ICompressionMethod.h"
 #include "../compression/bzip2/bzip2_encoder.h"
 #include "../compression/bzip2/bzip2_decoder.h"
 
 #include <memory>
-
-#ifndef ZIPLIB_NO_BZIP2
 
 class Bzip2Method :
   public ICompressionMethod

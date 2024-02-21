@@ -5,8 +5,6 @@
 
 #include <cstdint>
 
-#ifndef ZIPLIB_NO_BZIP2
-
 #include "extlibs/bzip2/bzlib.h"
 
 template <typename ELEM_TYPE, typename TRAITS_TYPE>
@@ -212,5 +210,3 @@ class basic_bzip2_decoder
 typedef basic_bzip2_decoder<uint8_t, std::char_traits<uint8_t>>  byte_bzip2_decoder;
 typedef basic_bzip2_decoder<char, std::char_traits<char>>        bzip2_decoder;
 typedef basic_bzip2_decoder<wchar_t, std::char_traits<wchar_t>>  wbzip2_decoder;
-
-#endif // ZIPLIB_NO_BZIP2

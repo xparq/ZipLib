@@ -1,11 +1,12 @@
+#ifndef ZIPLIB_NO_LZMA
+
 #pragma once
+
 #include "ICompressionMethod.h"
 #include "../compression/lzma/lzma_encoder.h"
 #include "../compression/lzma/lzma_decoder.h"
 
 #include <memory>
-
-#ifndef ZIPLIB_NO_LZMA
 
 class LzmaMethod :
   public ICompressionMethod

@@ -3,8 +3,6 @@
 
 #include <algorithm>
 
-#ifndef ZIPLIB_NO_BZIP2
-
 struct bzip2_encoder_properties
   : compression_encoder_properties_interface
 {
@@ -26,5 +24,3 @@ struct bzip2_encoder_properties
   int     BlockSize;
   int     WorkFactor;
 };
-
-#endif // ZIPLIB_NO_BZIP2

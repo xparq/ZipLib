@@ -2,8 +2,6 @@
 #include "lzma_handle.h"
 #include "lzma_out_stream.h"
 
-#ifndef ZIPLIB_NO_LZMA
-
 #include "extlibs/lzma/7zVersion.h"
 #include "extlibs/lzma/LzmaEnc.h"
 
@@ -41,5 +39,3 @@ namespace detail
       Byte _header[HEADER_SIZE];
   };
 }
-
-#endif // ZIPLIB_NO_LZMA

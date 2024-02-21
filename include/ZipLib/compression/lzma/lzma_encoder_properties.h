@@ -3,8 +3,6 @@
 
 #include "detail/lzma_handle.h"
 
-#ifndef ZIPLIB_NO_LZMA
-
 #include "extlibs/lzma/LzmaEnc.h"
 
 struct lzma_encoder_properties
@@ -41,5 +39,3 @@ struct lzma_encoder_properties
   bool IsMultithreaded;
   int  CompressionLevel;
 };
-
-#endif // ZIPLIB_NO_LZMA

@@ -13,8 +13,6 @@
 #include <thread>
 #include <cstdint>
 
-#ifndef ZIPLIB_NO_LZMA
-
 template <typename ELEM_TYPE, typename TRAITS_TYPE>
 class basic_lzma_encoder
   : public compression_encoder_interface_basic<ELEM_TYPE, TRAITS_TYPE>
@@ -118,5 +116,3 @@ class basic_lzma_encoder
 typedef basic_lzma_encoder<uint8_t, std::char_traits<uint8_t>>  byte_lzma_encoder;
 typedef basic_lzma_encoder<char, std::char_traits<char>>        lzma_encoder;
 typedef basic_lzma_encoder<wchar_t, std::char_traits<wchar_t>>  wlzma_encoder;
-
-#endif // ZIPLIB_NO_LZMA

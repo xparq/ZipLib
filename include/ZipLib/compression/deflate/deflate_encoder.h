@@ -5,8 +5,6 @@
 
 #include <cstdint>
 
-#ifndef ZIPLIB_NO_ZLIB
-
 #include "extlibs/zlib/zlib.h"
 
 template <typename ELEM_TYPE, typename TRAITS_TYPE>
@@ -167,5 +165,3 @@ class basic_deflate_encoder
 typedef basic_deflate_encoder<uint8_t, std::char_traits<uint8_t>>  byte_deflate_encoder;
 typedef basic_deflate_encoder<char, std::char_traits<char>>        deflate_encoder;
 typedef basic_deflate_encoder<wchar_t, std::char_traits<wchar_t>>  wdeflate_encoder;
-
-#endif // ZIPLIB_NO_ZLIB

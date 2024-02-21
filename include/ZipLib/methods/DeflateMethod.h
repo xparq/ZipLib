@@ -1,11 +1,11 @@
+#ifndef ZIPLIB_NO_ZLIB
+
 #pragma once
 #include "ICompressionMethod.h"
 #include "../compression/deflate/deflate_encoder.h"
 #include "../compression/deflate/deflate_decoder.h"
 
 #include <memory>
-
-#ifndef ZIPLIB_NO_ZLIB
 
 class DeflateMethod :
   public ICompressionMethod
