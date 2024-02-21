@@ -19,6 +19,7 @@
 *.lib
 *.ilk
 *.pdb
+*.idb
 
 # Visual Studio cruft
 .vs/*

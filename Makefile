@@ -60,8 +60,8 @@ C_AND_CXX_FLAGS = -I. -Iinclude
 C_AND_CXX_FLAGS.linux = -o $@ -Wall -Wno-enum-conversion -O3 -fPIC
 C_AND_CXX_FLAGS.mingw = -o $@ -Wall -Wno-enum-conversion -O3
 C_AND_CXX_FLAGS.msvc  = -Fo$@ -nologo -W4 -O2
-C_AND_CXX_FLAGS.msvc.static = -MT #!! Applications must be compiled with the same flag if linked to a static lib! :-/
-C_AND_CXX_FLAGS.msvc.shared = -ML
+C_AND_CXX_FLAGS.msvc.static =
+C_AND_CXX_FLAGS.msvc.shared =
 C_AND_CXX_FLAGS.msvc += ${C_AND_CXX_FLAGS.msvc.$(LIB_MODE)}
 C_AND_CXX_FLAGS += ${C_AND_CXX_FLAGS.$(TOOLCHAIN)}
 
@@ -74,6 +74,20 @@ CXXFLAGS.linux  = -std=c++11
 CXXFLAGS.mingw  = -std=c++11 -D_POSIX_C_SOURCE # localtime_r is only enabled if _POSIX_C_SOURCE is defined! :-o
 CXXFLAGS.msvc   = -EHsc -D_POSIX_C_SOURCE # Doesn't even recognize c++11 any more, so nothing to do.
 CXXFLAGS += $(C_AND_CXX_FLAGS) ${CXXFLAGS.$(TOOLCHAIN)}
+
+# Compiler options to use only when compiling objects for the lib:
+CLIBFLAGS.linux  =
+CLIBFLAGS.mingw  =
+CLIBFLAGS.msvc.static = -Zl # Omit default lib
+CLIBFLAGS.msvc.shared = -LD # Create DLL <-!! Likely irrelevant here, as it's a flag for linking!
+CLIBFLAGS.msvc   = ${CLIBFLAGS.msvc.$(LIB_MODE)}
+CLIBFLAGS = ${CLIBFLAGS.$(TOOLCHAIN)}
+
+# Compiler options to use only when compiling & linking the test/demo:
+CEXEFLAGS.linux  =
+CEXEFLAGS.mingw  =
+CEXEFLAGS.msvc   = -MT
+CEXEFLAGS = ${CEXEFLAGS.$(TOOLCHAIN)}
 
 # Lib builder
 # - shared:
@@ -146,7 +160,7 @@ libname_prefix = ${libname_prefix.$(TOOLCHAIN)}
 all: $(TEST_EXE)
 
 $(TEST_EXE): $(ZIPLIB)
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $(SRC_SUBDIR)/test/Main.cpp $(ZIPLIB)
+	$(CXX) $(CXXFLAGS) $(CEXEFLAGS) $(SRC_SUBDIR)/test/Main.cpp $(LDFLAGS) $(ZIPLIB)
 
 $(ZIPLIB_STATIC): $(OBJS)
 	$(LIBTOOL_STATIC) $(LIBTOOL_STATIC_FLAGS) $^
@@ -169,10 +183,10 @@ endif
 
 
 %.$(objext): %.cpp
-	$(CXX) $(CXXFLAGS) -c $<
+	$(CXX) $(CXXFLAGS) $(CLIBFLAGS) -c $<
 
 %.$(objext): %.c
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) $(CLIBFLAGS) -c $<
 
 clean:
 ifeq ($(TOOLCHAIN), msvc)
