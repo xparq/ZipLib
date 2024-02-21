@@ -7,7 +7,10 @@
 #include "ZipLib/ZipFile.h"
 #include "ZipLib/streams/memstream.h"
 
-#include "ZipLib/methods/Bzip2Method.h"
+#include "ZipLib/method/Deflate.h"
+#include "ZipLib/method/Lzma.h"
+#include "ZipLib/method/Bzip2.h"
+#include "ZipLib/method/Store.h"
 
 #include <fstream>
 

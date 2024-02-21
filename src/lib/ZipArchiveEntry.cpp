@@ -3,7 +3,7 @@
 
 #include "ZipLib/detail/ZipLocalFileHeader.h"
 
-#include "ZipLib/methods/ZipMethodResolver.h"
+#include "ZipLib/method/ZipMethodResolver.h"
 
 #include "ZipLib/streams/zip_cryptostream.h"
 #include "ZipLib/streams/compression_encoder_stream.h"

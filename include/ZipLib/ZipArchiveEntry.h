@@ -2,10 +2,8 @@
 #include "detail/ZipLocalFileHeader.h"
 #include "detail/ZipCentralDirectoryFileHeader.h"
 
-#include "methods/ICompressionMethod.h"
-#include "methods/StoreMethod.h"
-#include "methods/DeflateMethod.h"
-#include "methods/LzmaMethod.h"
+#include "method/ICompressionMethod.h"
+#include "method/Deflate.h" // Used as the default
 
 #include "streams/substream.h"
 #include "utils/enum_utils.h"

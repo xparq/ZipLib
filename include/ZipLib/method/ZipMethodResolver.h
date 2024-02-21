@@ -3,10 +3,10 @@
 #include <memory>
 #include "ICompressionMethod.h"
 
-#include "StoreMethod.h"
-#include "DeflateMethod.h"
-#include "Bzip2Method.h"
-#include "LzmaMethod.h"
+#include "Store.h"
+#include "Deflate.h"
+#include "Bzip2.h"
+#include "Lzma.h"
 
 #define ZIP_METHOD_ADD(method_class)                                                            \
   if (compressionMethod == method_class::GetZipMethodDescriptorStatic().GetCompressionMethod()) \

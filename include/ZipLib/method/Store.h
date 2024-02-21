@@ -29,7 +29,7 @@ class StoreMethod :
 #else
 
 // [Cecil] Replace with a dummy method in case zlib is disabled
-#include "DummyMethod.h"
+#include "Dummy.h"
 
 typedef DummyMethod StoreMethod;
 

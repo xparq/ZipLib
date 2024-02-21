@@ -1,3 +1,5 @@
+tmp/
+
 # Compiled object files
 *.obj
 *.slo
